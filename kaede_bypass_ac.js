@@ -79,7 +79,7 @@
   }
 
   window.fetch = (...data) => {
-    if (blacklist_url(this.xhr_url?.toString().toLowerCase().replaceAll(" ", "").replaceAll("-", "")) === true) return;
+    if (blacklist_url(data[0]?.toString().toLowerCase().replaceAll(" ", "").replaceAll("-", "")) === true) return;
     return o_fetch(...data);
   }
 })();
