@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         kaede's quizizz anti-cheat bypass (bypass fullscreen)
 /
-// @version      2025-10-09
+// @version      2026-01-08
 // @description  bypass wayground's "anti-cheating"
 // @author       kaede
 // @match        https://wayground.com/join/*
