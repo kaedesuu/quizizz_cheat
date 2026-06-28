@@ -1,0 +1,3 @@
+// The running game dashboard won't be notified when you leaves tab
+// You can still sending answers without fullscreen
+(() => { setInterval((() => { const e = document.getElementsByClassName("modal-container"); if (e.length > 0) for (const t of e) t.querySelector(".fullscreen-exit-warning-container") && t.remove() }), 1e3); const e = window.XMLHttpRequest; window.XMLHttpRequest = class extends e { xhr_url; open(e, t) { return this.xhr_url = t, super.open(e, t) } send(e) { if (!this.xhr_url?.toString().toLowerCase().replaceAll(" ", "").includes("createtestgameactivity")) return super.send(e) } } })();

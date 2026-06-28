@@ -4,8 +4,8 @@
 // @version      2024-07-03
 // @description  try to take over the world!
 // @author       kaede
-// @match        https://quizizz.com/join/game/*
-// @icon         data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==
+// @match        https://wayground.com/join/game/*
+// @icon         https://www.google.com/s2/favicons?sz=64&domain=wayground.com
 // @grant        none
 // ==/UserScript==
 
