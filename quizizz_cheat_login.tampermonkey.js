@@ -12,5 +12,5 @@
 (function () {
   'use strict';
 
-  ; (() => { const e = window.XMLHttpRequest; const n = e => { let t = typeof e !== "string" ? JSON.stringify(e) : e; try { t = JSON.parse(t) } catch (s) { return false } return typeof t === "object" && t !== null }; const r = prompt("Enter playerId/playerName to join, or fake login as someone else."); class t extends e { send(e) { console.log(e); let t = e; if (n(e)) { const s = JSON.parse(e); if (s && s["playerId"]) { s["playerId"] = r } t = JSON.stringify(s) } return super.send(t) } } window.XMLHttpRequest = t })();
+  ;(() => { const e = window.XMLHttpRequest; const n = e => { let t = typeof e !== "string" ? JSON.stringify(e) : e; try { t = JSON.parse(t) } catch (s) { return false } return typeof t === "object" && t !== null }; const r = prompt("Enter playerId/playerName to join, or fake login as someone else."); class t extends e { send(e) { console.log(e); let t = e; if (n(e)) { const s = JSON.parse(e); if (s && s["playerId"]) { s["playerId"] = r } t = JSON.stringify(s) } return super.send(t) } } window.XMLHttpRequest = t })();
 })();
