@@ -1,0 +1,16 @@
+// ==UserScript==
+// @name         kaede's quizizz anti-cheat bypass (bypass fullscreen)
+/
+// @version      2025-10-09
+// @description  bypass new wayground's "anti-cheating"
+// @author       You
+// @match        https://wayground.com/join/game/*
+// @icon         https://www.google.com/s2/favicons?sz=64&domain=wayground.com
+// @grant        none
+// ==/UserScript==
+
+(function () {
+  'use strict';
+
+  ;(() => { let e = setInterval((() => { const t = document.getElementsByClassName("modal-container"); if (t.length > 0) for (const n of t) n.querySelector(".fullscreen-exit-warning-container") && (n.remove(), clearInterval(e)) }), 250); new MutationObserver(((e, t) => { for (const t of e) { if ("childList" !== t.type) return; for (const e of t.addedNodes) { if (1 !== e.nodeType) return; e.classList.contains("modal-container") && e.querySelector(".fullscreen-exit-warning-container") && e.remove(), e.classList.contains("toast") && e.classList.contains("toast-alert") && e.querySelector(".title") && e.querySelector(".title").innerText?.toString().includes("left the tab") && (e.style.display = "none") } } })).observe(document.body, { childList: !0, subtree: !0 }); const t = window.XMLHttpRequest; window.XMLHttpRequest = class extends t { xhr_url; open(e, t) { return this.xhr_url = t, super.open(e, t) } send(e) { if (!this.xhr_url?.toString().toLowerCase().replaceAll(" ", "").includes("createtestgameactivity")) return super.send(e) } } })();
+})();
