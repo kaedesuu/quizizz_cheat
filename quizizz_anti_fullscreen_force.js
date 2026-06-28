@@ -2,7 +2,7 @@
 // This script will remove the forced fullscreen mode in Wayground. (The "Full screen mode required" popup will never appear again).
 // The script will remove "Your teacher has been alerted that you left the tab." toast message.
 
-; (() => {
+;(() => {
   // Delete the blocking element
   let _removal_modaL_container = setInterval(() => {
     const model_container = document.getElementsByClassName("modal-container");
