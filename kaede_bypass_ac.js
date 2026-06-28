@@ -62,7 +62,9 @@
   const original_xhr = window.XMLHttpRequest;
   const o_fetch = window.fetch;
 
-  class injected_xhr extends original_xhr {
+  const blacklist_url = (url) => url.includes("playerinfraction") || url.include("_anserver");
+
+  window.XMLHttpRequest = class extends original_xhr {
     xhr_url;
     open(method, url) { this.xhr_url = url; return super.open(method, url); }
     send(body) {
@@ -70,17 +72,14 @@
       // if (this.xhr_url?.toString().toLowerCase().replaceAll(" ", "").includes("createtestgameactivity")) return;
       
       // The new API (sending anti-cheating signal): https://wayground.com/_gameapi/main/public/v1/games/{game_hash}/player-infraction
-      if (this.xhr_url?.toString().toLowerCase().replaceAll(" ", "").replaceAll("-", "").includes("playerinfraction")) return;
-
-
+      // They also report the time through: https://fnl.wayground.com/_anserverv2/main/api/v1/frontend
+      if (blacklist_url(this.xhr_url?.toString().toLowerCase().replaceAll(" ", "").replaceAll("-", "")) === true) return;
       return super.send(body);
     }
   }
 
   window.fetch = (...data) => {
-    if (data[0]?.toString().toLowerCase().replaceAll(" ", "").replaceAll("-", "").includes("playerinfraction")) return;
+    if (blacklist_url(this.xhr_url?.toString().toLowerCase().replaceAll(" ", "").replaceAll("-", "")) === true) return;
     return o_fetch(...data);
   }
-
-  window.XMLHttpRequest = injected_xhr;
 })();
