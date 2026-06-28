@@ -9,6 +9,8 @@
   if (window.location.href?.toString().includes("/join/pre-game")) {
     Element.prototype.requestFullscreen = () => {};
   }
+  // It seems like they have added paste detection and web extension detection.
+  const toast_content_block = ["left the tab", "right-click", "resized the window", "paste", "web extension"]; // if the toast (notification)'s content includes these, they will be ignored'
 
   window.history.replaceState = (...data) => {
     // Check for changes in the url
@@ -48,7 +50,7 @@
 
         // Remove the "Your teacher has been alerted that you left the tab." toast message.
         if (addedNode.classList.contains("toast") && addedNode.classList.contains("toast-alert")) {
-          if (addedNode.querySelector(".title") && addedNode.querySelector(".title").innerText?.toString().includes("left the tab")) {
+          if (addedNode.querySelector(".title") && toast_content_block.some((value) => addedNode.querySelector(".title").innerText?.toString().toLowerCase().replaceAll(" ", "").replaceAll("-", "").includes(value?.toString().toLowerCase().replaceAll(" ", "").replaceAll("-", ""))) ) {
             addedNode.style.display = "none";
           }
         }
@@ -63,7 +65,13 @@
     xhr_url;
     open(method, url) { this.xhr_url = url; return super.open(method, url); }
     send(body) {
-      if (this.xhr_url?.toString().toLowerCase().replaceAll(" ", "").includes("createtestgameactivity")) return;
+      // This only block their anti-cheating testing stage (early development)
+      // if (this.xhr_url?.toString().toLowerCase().replaceAll(" ", "").includes("createtestgameactivity")) return;
+      
+      // The new API (sending anti-cheating signal): https://wayground.com/_gameapi/main/public/v1/games/{game_hash}/player-infraction
+      if (this.xhr_url?.toString().toLowerCase().replaceAll(" ", "").replaceAll("-", "").includes("playerinfraction")) return;
+
+
       return super.send(body);
     }
   }
