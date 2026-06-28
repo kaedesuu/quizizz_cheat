@@ -1,6 +1,5 @@
 // ==UserScript==
 // @name         quizizz_cheat_login
-/
 // @version      2024-09-03
 // @description  try to take over the world!
 // @author       kaede
