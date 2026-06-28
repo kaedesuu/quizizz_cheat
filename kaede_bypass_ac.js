@@ -62,7 +62,7 @@
   const original_xhr = window.XMLHttpRequest;
   const o_fetch = window.fetch;
 
-  const blacklist_url = (url) => url.includes("playerinfraction") || url.includes("_anserver");
+  const blacklist_url = (url) => url.includes("playerinfraction") || url.includes("_anserver") || url.includes("sentry");
 
   window.XMLHttpRequest = class extends original_xhr {
     xhr_url;
@@ -76,6 +76,11 @@
       if (blacklist_url(this.xhr_url?.toString().toLowerCase().replaceAll(" ", "").replaceAll("-", "")) === true) return;
       return super.send(body);
     }
+  }
+
+  window.navigator.sendBeacon = (...data) => {
+    if (blacklist_url(data[0]?.toString().toLowerCase().replaceAll(" ", "").replaceAll("-", "")) === true) return;
+    return o_fetch(...data);
   }
 
   window.fetch = (...data) => {
