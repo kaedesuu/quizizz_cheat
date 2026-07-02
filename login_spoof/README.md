@@ -10,6 +10,6 @@ To install the script, you need to:
 3. press `Install`
 
 ## structure
-- <./index.js>: the main file, not minified.
-- <./index.min.js>: the minified version of the main file
-- <./wayground_spoof_login.user.js>: use for tampermonkey userscript.
+- [./index.js](./index.js): the main file, not minified.
+- [./index.min.js](./index.min.js): the minified version of the main file
+- [./wayground_spoof_login.user.js](./wayground_spoof_login.user.js): use for tampermonkey userscript.
