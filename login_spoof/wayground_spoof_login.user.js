@@ -1,7 +1,8 @@
 // ==UserScript==
-// @name         quizizz_cheat_login
+// @name         wayground_spoof_login
+// @namespace    https://github.com/kaedesuu/quizizz_cheat
 // @version      2024-09-03
-// @description  try to take over the world!
+// @description  fake joining the room as someone's username.
 // @author       kaede
 // @match        https://wayground.com/join/*
 // @icon         https://www.google.com/s2/favicons?sz=64&domain=wayground.com

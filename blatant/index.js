@@ -73,6 +73,13 @@
     }
     const crafted_prompt = ai_prompt?.replace("__USER_REQUEST_JSON__", JSON.stringify(crafted_information));
 
+    // get gemeini key input
+    const gemini_key = prompt("get gemini key from google's aistudio and paste it here.");
+    if (gemini_key?.toString().replaceAll(" ", "") === "") {
+      alert("not a valid gemini key.");
+      return {};
+    }
+
     // Fetch AI 
     const ai_res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-1.0-pro:generateContent?key=${gemini_key}`, {
       "method": "POST",
